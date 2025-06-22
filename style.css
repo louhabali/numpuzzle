@@ -1,0 +1,84 @@
+body {
+  font-family: 'Georgia', serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #4e342e; 
+  color: #fff;
+  margin: 0;
+}
+
+input, button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  margin: 10px 5px;
+  background: #795548;
+  color: white;
+  outline: none;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+  transition: background 0.2s;
+}
+
+input::placeholder {
+  color: #ddd;
+}
+
+input:focus, button:hover {
+  background: #a1887f;
+}
+
+.puzzle {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+  background: #3e2723;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.tile {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(145deg, #a97453, #8e5c3c);
+  color: #fff3e0;
+  font-size: 26px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset -2px -2px 5px #6d4c41, inset 2px 2px 5px #bcaaa4;
+  transition: transform 0.2s ease-in-out, background 0.3s;
+}
+
+.tile:hover:not(.empty) {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #b07a58, #321b0a);
+}
+
+.empty {
+  background: transparent;
+  border: 2px dashed #6d4c41;
+  box-shadow: none;
+  color: transparent;
+  cursor: default;
+}
+@keyframes winFlash {
+  0%   { background-color: #fff176; }
+  50%  { background-color: #ffd54f; }
+  100% { background-color: #fff176; }
+}
+
+.win-effect {
+  animation: winFlash 0.3s ease-in-out;
+  animation-iteration-count: 6;
+  border-radius: 12px;
+  box-shadow: 0 0 25px 5px gold;
+}
