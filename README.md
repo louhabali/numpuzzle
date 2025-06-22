@@ -8,7 +8,7 @@ A classic sliding puzzle built with **HTML**, **CSS**, and **JavaScript** — fe
 
 ## 📸 Preview
 
-![Sliding Puzzle Preview](puzzle.png)
+![Sliding Puzzle Preview](pzl.png)
 
 ---
 
