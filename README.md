@@ -7,12 +7,10 @@ A classic sliding puzzle built with **HTML**, **CSS**, and **JavaScript** — fe
 ---
 
 ## 📸 Preview
-
-![Sliding Puzzle Preview , welcome](welcome.png)
 ![Sliding Puzzle Preview , game](game.png)
 
 ---
-## YOU CAN PLAY IT ON : alilopuzz.netlify.app
+## YOU CAN PLAY IT ON : [alilopuzz.netlify.app](https://alilopuzz.netlify.app/)
 ---
 ## ✨ Features
 
