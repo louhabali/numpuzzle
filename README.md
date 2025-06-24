@@ -8,10 +8,12 @@ A classic sliding puzzle built with **HTML**, **CSS**, and **JavaScript** — fe
 
 ## 📸 Preview
 
-![Sliding Puzzle Preview](pzl.png)
+![Sliding Puzzle Preview , welcome](welcome.png)
+![Sliding Puzzle Preview , game](game.png)
 
 ---
-
+## YOU CAN PLAY IT ON : alilopuzz.netlify.app
+---
 ## ✨ Features
 
 - ✅ Dynamic grid size (choose 3x3, 4x4, 5x5…)

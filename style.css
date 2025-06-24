@@ -9,47 +9,111 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
-input, button {
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('55.gif') no-repeat center/cover;
+  z-index: -1;
+}
+
+.logo {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px #000, 4px 4px #444;
+  margin-bottom: 10px;
+}
+
+.info-card {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 480px;
+  color: #fff;
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.2),
+    0 0 40px rgba(128, 0, 255, 0.2),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-card h2 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  color: #00f9ff;
+  text-shadow: 1px 1px #000;
+  margin-top: 0;
+}
+
+.info-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+select, button {
   padding: 12px 18px;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   border-radius: 10px;
   margin: 12px 6px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, rgba(17, 17, 17, 0.12), rgba(19, 18, 18, 0.05));
+  color: #5aa9f8;
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 1px;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 8px rgba(80, 117, 238, 0.4),
+    0 0 18px rgba(1, 28, 60, 0.3),
+    inset 0 0 4px rgba(61, 123, 181, 0.1);
   transition: all 0.3s ease-in-out;
   outline: none;
+  text-shadow: 1px 1px 2px #000;
+  cursor: pointer;
 }
 
-input::placeholder {
-  color: #ddd;
+select:focus, button:hover {
+  background: rgba(12, 12, 12, 0.2);
+  color: #000000;
+  transform: scale(1.08);
+  box-shadow:
+    0 0 12px #00ffaa,
+    0 0 25px #0077ff,
+    inset 0 0 8px #00000088;
+  text-shadow: 0 0 5px #000000, 0 0 10px #5f8cda;
 }
 
-input:focus, button:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
 
 .puzzle {
+  position: relative;
   display: grid;
   gap: 10px;
   margin-top: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  border-radius: 24px;
+  background: rgba(20, 10, 30, 0.75);
+  box-shadow:
+    0 0 15px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(128, 0, 255, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
 
 .tile {
+  font-family: 'Press Start 2P', cursive;
   width: 80px;
   height: 80px;
-  background: linear-gradient(145deg, #3a3a3a, #2d2c2c);
-  color: #f0e68c;
-  font-size: 28px;
+  background: linear-gradient(145deg, #261e36, #1c182d);
+  color: #d7ffcd;
+  font-size: 20px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -57,16 +121,25 @@ input:focus, button:hover {
   border-radius: 16px;
   cursor: pointer;
   user-select: none;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px #000;
   box-shadow:
-    inset -2px -2px 4px rgba(255, 255, 255, 0.1),
-    inset 2px 2px 4px rgba(0, 0, 0, 0.4),
-    0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease, background 0.3s;
+    0 0 8px rgba(6, 230, 255, 0.4),
+    0 0 15px rgba(0, 82, 133, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.4),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.03),
+    0 6px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background 0.3s, box-shadow 0.3s;
 }
 
 .tile:hover:not(.empty) {
   transform: scale(1.07);
-  background: linear-gradient(145deg, #131313, #0f0f0f);
+  background: linear-gradient(145deg, #392e4d, #1f1833);
+  box-shadow:
+    0 0 10px #00ffaa,
+    0 0 25px #00487a,
+    inset 0 0 10px #99ffc7;
 }
 
 .empty {
@@ -87,12 +160,4 @@ input:focus, button:hover {
   animation-iteration-count: 6;
   border-radius: 16px;
   box-shadow: 0 0 30px 10px gold;
-}
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('gify.webp') no-repeat center/cover;
-  filter: blur(4px) brightness(0.5);
-  z-index: -1;
 }
