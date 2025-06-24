@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sliding Puzzle</title>
+    <title>AliloPuzz</title>
+    <link rel="icon" href="welcome.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
@@ -11,10 +12,6 @@
     />
   </head>
   <body>
-    <audio id="bg-music" autoplay loop volume="0.3">
-      <source src="music.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
     <div style="text-align: center; margin-top: 20px">
       <h1 class="logo">AliloPuzz</h1>
     </div>
@@ -41,13 +38,18 @@
     <div style="display: none" class="puzzle" id="puzzle"></div>
 
     <script>
-     
+      const audio = new Audio('music.mp3')
+      audio.loop = true
+      audio.volume = 0.5
+      audio.preload = 'auto'
 
       document.getElementById('play').setAttribute('disabled', 'true')
       function inputchange() {
         document.getElementById('play').removeAttribute('disabled')
       }
       document.getElementById('play').addEventListener('click', () => {
+        audio.play()
+
         let howmuch = parseInt(document.getElementById('puzzlecount').value)
         if (![3, 4, 5, 6, 7].includes(howmuch))
           return alert('Invalid size selected.')
