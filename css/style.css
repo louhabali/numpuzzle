@@ -16,7 +16,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('55.gif') no-repeat center/cover;
+  background: url('../images/55.gif') no-repeat center/cover;
   z-index: -1;
 }
 

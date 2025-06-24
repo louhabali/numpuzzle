@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AliloPuzz</title>
-    <link rel="icon" href="welcome.png" type="image/png" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/welcome.png" type="image/png" />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
@@ -24,7 +24,7 @@
     </div>
 
     <div>
-      <select onchange="inputchange()" id="puzzlecount">
+      <select id="puzzlecount">
         <option value="" disabled selected>Select puzzle size</option>
         <option value="3">3 × 3</option>
         <option value="4">4 × 4</option>
@@ -36,140 +36,6 @@
 
     <div style="display: none" class="puzzle" id="puzzle"></div>
 
-    <script>
-      const audio = new Audio('music.mp3')
-      audio.loop = true
-      audio.volume = 0.5
-      audio.preload = 'auto'
-
-      document.getElementById('play').setAttribute('disabled', 'true')
-      function inputchange() {
-        document.getElementById('play').removeAttribute('disabled')
-      }
-      document.getElementById('play').addEventListener('click', () => {
-        audio.play()
-
-        let howmuch = parseInt(document.getElementById('puzzlecount').value)
-        if (![3, 4, 5, 6].includes(howmuch))
-          return alert('Invalid size selected.')
-
-        document.getElementById('puzzlecount').remove()
-        document.getElementById('play').remove()
-        document.querySelector('.info-card').remove()
-
-        let randoms = []
-        let grid = []
-
-        for (let i = 1; i <= howmuch; i++) {
-          let rows = []
-          for (let j = 1; j <= howmuch; j++) {
-            if (i == howmuch && j == howmuch) {
-              rows.push('')
-              break
-            }
-            let r
-            while (true) {
-              r = Math.floor(Math.random() * (howmuch * howmuch - 1)) + 1
-              if (!randoms.includes(r)) {
-                randoms.push(r)
-                break
-              }
-            }
-            rows.push(r)
-          }
-          grid.push(rows)
-        }
-
-        const puzzle = document.getElementById('puzzle')
-        const move = new Audio('move.mp3')
-        audio.volume = 0.8
-        function playMoveSound() {
-          const sound = move.cloneNode() 
-          sound.play()
-        }
-        //audio.preload = 'auto'
-        puzzle.innerHTML = ''
-        puzzle.style.display = 'grid'
-        puzzle.style.gridTemplateColumns = `repeat(${howmuch}, 80px)`
-        puzzle.style.gridTemplateRows = `repeat(${howmuch}, 80px)`
-
-        for (let i = 0; i < howmuch; i++) {
-          for (let j = 0; j < howmuch; j++) {
-            let val = grid[i][j]
-            let div = document.createElement('div')
-            div.className = val === '' ? 'tile empty' : 'tile'
-            div.textContent = val
-            div.dataset.row = i
-            div.dataset.col = j
-
-            div.addEventListener('click', function () {
-              playMoveSound();
-              let r = parseInt(this.dataset.row)
-              let c = parseInt(this.dataset.col)
-
-              let dirs = [
-                [r - 1, c],
-                [r + 1, c],
-                [r, c - 1],
-                [r, c + 1]
-              ]
-
-              for (let [rr, cc] of dirs) {
-                if (rr >= 0 && rr < howmuch && cc >= 0 && cc < howmuch) {
-                  if (grid[rr][cc] === '') {
-                    ;[grid[r][c], grid[rr][cc]] = [grid[rr][cc], grid[r][c]]
-                    update()
-                    return
-                  }
-                }
-              }
-            })
-
-            puzzle.appendChild(div)
-          }
-        }
-
-        function update() {
-          const allTiles = document.querySelectorAll('.tile')
-          allTiles.forEach(tile => {
-            let r = parseInt(tile.dataset.row)
-            let c = parseInt(tile.dataset.col)
-            let val = grid[r][c]
-            tile.textContent = val
-            tile.className = val === '' ? 'tile empty' : 'tile'
-          })
-          if (checkWin()) {
-            setTimeout(() => showWinAnimation(), 500)
-            setTimeout(() => window.location.reload(), 3500)
-          }
-        }
-
-        function showWinAnimation() {
-          const tiles = document.querySelectorAll('.tile')
-          tiles.forEach(tile => {
-            if (tile.classList.contains('empty')) return
-            tile.classList.add('win-effect')
-          })
-          setTimeout(() => {
-            tiles.forEach(tile => tile.classList.remove('win-effect'))
-          }, 3000)
-        }
-
-        function checkWin() {
-          let c = 1
-          for (let i = 0; i < howmuch; i++) {
-            for (let j = 0; j < howmuch; j++) {
-              if (i === howmuch - 1 && j === howmuch - 1) {
-                if (grid[i][j] !== '') return false
-              } else {
-                if (grid[i][j] !== c) return false
-                c++
-              }
-            }
-          }
-          return true
-        }
-      })
-    </script>
+    <script type="module" src="scripts/script.js"></script>
   </body>
 </html>
