@@ -5,23 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sliding Puzzle</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .info-card {
+        background: #ffffff22;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        text-align: center;
+        max-width: 400px;
+      }
+      .info-card h2 {
+        margin-top: 0;
+      }
+      select,
+      button {
+        padding: 12px;
+        margin: 10px;
+      }
+    </style>
   </head>
   <body>
-    <div>
-      <input
-        placeholder="enter how much numbers..."
-        type="number"
-        id="puzzlecount"
-      />
-      <button id="play">submit</button>
+    <div class="info-card">
+      <h2>🧩 Sliding Puzzle Game</h2>
+      <p>
+        Arrange the tiles in order by sliding them into the empty space. <br />
+        Only sizes from 3×3 to 9×9 are allowed.
+      </p>
     </div>
+
+    <div>
+      <select id="puzzlecount">
+        <option value="" disabled selected>Select puzzle size</option>
+        <option value="3">3 × 3</option>
+        <option value="4">4 × 4</option>
+        <option value="5">5 × 5</option>
+        <option value="6">6 × 6</option>
+        <option value="7">7 × 7</option>
+        <option value="8">8 × 8</option>
+        <option value="9">9 × 9</option>
+      </select>
+      <button id="play">Start Game</button>
+    </div>
+
     <div class="puzzle" id="puzzle"></div>
 
     <script>
       document.getElementById('play').addEventListener('click', () => {
         let howmuch = parseInt(document.getElementById('puzzlecount').value)
+        if (![3, 4, 5, 6, 7, 8, 9].includes(howmuch)) return alert('Invalid size selected.')
+
         document.getElementById('puzzlecount').remove()
         document.getElementById('play').remove()
+        document.querySelector('.info-card').remove()
+
         let randoms = []
         let grid = []
 
@@ -44,8 +80,10 @@
           }
           grid.push(rows)
         }
+
         const puzzle = document.getElementById('puzzle')
         puzzle.innerHTML = ''
+        puzzle.style.display = 'grid'
         puzzle.style.gridTemplateColumns = `repeat(${howmuch}, 80px)`
         puzzle.style.gridTemplateRows = `repeat(${howmuch}, 80px)`
 
@@ -94,25 +132,17 @@
             tile.className = val === '' ? 'tile empty' : 'tile'
           })
           if (checkWin()) {
-            setTimeout(() => {
-         
-                showWinAnimation()
-                
-            }, 500)
-            setTimeout(() => {
-         
-               window.location.reload()
-                
-            }, 3500)
+            setTimeout(() => showWinAnimation(), 500)
+            setTimeout(() => window.location.reload(), 3500)
           }
         }
+
         function showWinAnimation() {
           const tiles = document.querySelectorAll('.tile')
           tiles.forEach(tile => {
             if (tile.classList.contains('empty')) return
             tile.classList.add('win-effect')
           })
-
           setTimeout(() => {
             tiles.forEach(tile => tile.classList.remove('win-effect'))
           }, 3000)
