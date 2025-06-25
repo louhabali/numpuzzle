@@ -11,25 +11,15 @@ export function FillGrid(grid, randoms, size) {
       isSolvable = true
     }
   }
-  for (let i = 1; i <= size; i++) {
-          let rows = []
-          for (let j = 1; j <= size; j++) {
-            if (i == size && j == size) {
-              rows.push('')
-              break
-            }
-            let r
-            while (true) {
-              r = Math.floor(Math.random() * (size * size - 1)) + 1
-              if (!randoms.includes(r)) {
-                randoms.push(r)
-                break
-              }
-            }
-            rows.push(r)
-          }
-          grid.push(rows)
-        }
+  for (let i = 0; i < size; i++) {
+    let row = []
+    for (let j = 0; j < size; j++) {
+      let val = flat[i * size + j]
+      row.push(val)
+      if (val !== '') randoms.push(val)
+    }
+    grid.push(row)
+  }
 }
 
 function isPuzzleSolvable(tiles, size) {
