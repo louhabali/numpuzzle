@@ -1,4 +1,7 @@
 body {
+  max-width: 100vw;    /* Never wider than viewport */
+  margin: 0;      /* Center horizontally */
+  overflow-x: hidden;  /* Prevent horizontal scroll if some child overflows */
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #1f1c2c, #928dab);
   color: #fff;
@@ -94,7 +97,6 @@ select:focus, button:hover {
   position: relative;
   display: grid;
   gap: 10px;
-  margin-top: 30px;
   padding: 25px;
   border-radius: 24px;
   background: rgba(20, 10, 30, 0.75);
@@ -109,11 +111,8 @@ select:focus, button:hover {
 
 .tile {
   font-family: 'Press Start 2P', cursive;
-  width: 80px;
-  height: 80px;
   background: linear-gradient(145deg, #261e36, #1c182d);
   color: #d7ffcd;
-  font-size: 20px;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -202,8 +201,8 @@ select:focus, button:hover {
   select option {
     font-size: 12px;
   }
-  .tile {
-  
-    font-size: 12px;
+
+  .tile:hover:not(.empty) {
+    transform: scale(1.05);
   }
 }
