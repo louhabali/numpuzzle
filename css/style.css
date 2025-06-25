@@ -102,7 +102,7 @@ select:focus, button:hover {
     0 0 15px rgba(0, 0, 0, 0.7),
     0 0 40px rgba(128, 0, 255, 0.3),
     inset 0 0 20px rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
@@ -160,4 +160,50 @@ select:focus, button:hover {
   animation-iteration-count: 6;
   border-radius: 16px;
   box-shadow: 0 0 30px 10px gold;
+}
+
+@media (max-width: 415px) and (max-height: 900px) {
+  .logo {
+    font-size: 1rem;
+    text-align: center;
+    margin: 10px auto 15px;
+    line-height: 1.4;
+  }
+
+  .info-card {
+    width: 90%;
+    max-width: 250px;
+    padding: 16px;
+    font-size: 12px;
+    margin: 20px auto;
+    border-radius: 16px;
+  }
+
+  .info-card h2 {
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+  }
+
+  .info-card p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  select,
+  button {
+    width: 100%;
+    max-width: 260px;
+    padding: 10px 12px;
+    font-size: 9px;
+    margin: 8px auto;
+    display: block;
+    letter-spacing: 0.5px;
+  }
+  select option {
+    font-size: 12px;
+  }
+  .tile {
+  
+    font-size: 12px;
+  }
 }
