@@ -33,9 +33,22 @@
       </select>
       <button id="play">Start Game</button>
     </div>
+    <div class="audio-controls">
+      <button id="toggle-music">🔇 Music: Off</button>
+      <button id="toggle-sound">🔈 Sound: Off</button>
+    </div>
+    <div id="timer" style="display: none" class="timer">⏱ Time Left: --</div>
 
     <div style="display: none" class="puzzle" id="puzzle"></div>
 
+    <div id="lose-message" class="lose-message" style="display: none">
+      <h2>Time's up! You lost.</h2>
+      <button id="play-again">Play Again</button>
+    </div>
+    <div id="win-message" class="win-message" style="display: none;">
+  <h2>You won! Great job!</h2>
+  <button id="play-again-win">Play Again</button>
+</div>
     <script type="module" src="scripts/script.js"></script>
   </body>
 </html>

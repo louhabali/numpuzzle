@@ -14,7 +14,68 @@ body {
   overflow: hidden;
   position: relative;
 }
+.win-message {
+  text-align: center;
+  margin-top: 30px;
+  color: #0f0;
+}
 
+.win-message button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #222;
+  color: #0f0;
+  border: 2px solid #0f0;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.audio-controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.audio-controls button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #222;
+  color: #0f0;
+  border: 2px solid #0f0;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.audio-controls button:hover {
+  background-color: #0f0;
+  color: #222;
+}
+.timer {
+  font-family: 'Press Start 2P', cursive;
+  color: #ffc20a;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.lose-message {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  margin-top: 30px;
+  color: #f00;
+}
+
+.lose-message button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #222;
+  color: #f00;
+  border: 2px solid #f00;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
 body::before {
   content: "";
   position: absolute;

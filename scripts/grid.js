@@ -33,10 +33,10 @@ function isPuzzleSolvable(tiles, size) {
   }
 
   if (size % 2 !== 0) {
-    return invCount % 2 === 0 
+    return invCount % 2 === 0
   } else {
     let blankRow = Math.floor(tiles.indexOf('') / size)
     let rowFromBottom = size - blankRow
-    return (invCount + rowFromBottom) % 2 === 0
+    return (invCount + rowFromBottom) % 2 === 1 
   }
 }
