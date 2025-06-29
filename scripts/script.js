@@ -44,7 +44,7 @@ document.getElementById('toggle-sound').addEventListener('click', () => {
 
 function playMoveSound() {
   if (soundOn) {
-    move.currentTime = 0 
+    move.currentTime = 0
     move.play()
   }
 }
@@ -77,20 +77,25 @@ document.getElementById('play').addEventListener('click', () => {
   FillGrid(grid, randoms, howmuch)
   const puzzle = document.getElementById('puzzle')
   Puzzlelogic(puzzle, grid, howmuch, playMoveSound)
-  update(grid, howmuch)
+  update(grid, howmuch, countdown)
 
 })
+
 function updateTimerDisplay() {
   const timer = document.getElementById('timer')
-  timer.textContent = `⏱ Time Left: ${timeLeft}s`
+  if (timer) {
+    timer.textContent = `⏱ Time Left: ${timeLeft}s`
+
+  }
 }
 document.getElementById('play-again-win').addEventListener('click', () => {
   location.reload()
 })
+
 function onLose() {
   document.getElementById('timer').style.display = 'none'
-   document.getElementById('toggle-music').style.display = 'none'
-   document.getElementById('toggle-sound').style.display = 'none'
+  document.getElementById('toggle-music').style.display = 'none'
+  document.getElementById('toggle-sound').style.display = 'none'
   document.getElementById('lose-message').style.display = 'block'
   document.getElementById('puzzle').style.display = 'none'
 }

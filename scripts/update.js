@@ -4,7 +4,7 @@ import {
 import {
   showWinAnimation
 } from "./animationwin.js";
-export function update(grid, size) {
+export function update(grid, size, countdown) {
   const allTiles = document.querySelectorAll('.tile')
   allTiles.forEach(tile => {
     let r = parseInt(tile.dataset.row)
@@ -14,11 +14,18 @@ export function update(grid, size) {
     tile.className = val === '' ? 'tile empty' : 'tile'
   })
   if (checkWin(grid, size)) {
+    console.log(11);
+
     clearInterval(countdown)
     setTimeout(() => {
       showWinAnimation()
-      document.getElementById('win-message').style.display = 'block'
-      document.getElementById('puzzle').style.display = 'none'
+      document.getElementById('toggle-music').remove()
+      document.getElementById('toggle-sound').remove()
+      document.getElementById('timer').remove()
+      setTimeout(() => {
+        document.getElementById('win-message').style.display = 'block'
+        document.getElementById('puzzle').remove()
+      }, 3000)
     }, 500)
   }
 }

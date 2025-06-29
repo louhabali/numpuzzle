@@ -15,6 +15,7 @@ body {
   position: relative;
 }
 .win-message {
+  font-family: 'Press Start 2P', cursive;
   text-align: center;
   margin-top: 30px;
   color: #0f0;
@@ -145,7 +146,7 @@ select, button {
 select:focus, button:hover {
   background: rgba(12, 12, 12, 0.2);
   color: #000000;
-  transform: scale(1.08);
+  transform: scale(1.02);
   box-shadow:
     0 0 12px #00ffaa,
     0 0 25px #0077ff,
@@ -217,9 +218,9 @@ select:focus, button:hover {
 
 .win-effect {
   animation: winFlash 0.4s ease-in-out;
-  animation-iteration-count: 6;
-  border-radius: 16px;
-  box-shadow: 0 0 30px 10px gold;
+  animation-iteration-count: 5;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 8px gold;
 }
 
 @media (max-width: 415px) and (max-height: 900px) {
