@@ -53,7 +53,7 @@ let timeLeft = 0
 document.getElementById('play').addEventListener('click', () => {
   let howmuch = parseInt(document.getElementById('puzzlecount').value)
   clearInterval(countdown)
-  timeLeft = howmuch * 20
+  timeLeft = 30 * howmuch
   updateTimerDisplay()
   countdown = setInterval(() => {
     timeLeft--
